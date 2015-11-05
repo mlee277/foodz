@@ -1,18 +1,20 @@
 var express = require('express');
 var app = express();
-var friendController = require('./models/friendController.js');
-var messageController = require('./models/messageController.js');
 var bodyParser = require('body-parser');
+var data = require('./test.js');
 
-app.use(express.static('../client'));
-app.use(express.static('server'));
-app.use(bodyParser());
+data('34.0211764,-118.4065364');
+setTimeout(function(){
+  console.log(data('34.0211764,-118.4065364'));
+},5000);
 
-app.get('/messages', messageController.getAllMessages);
-app.post('/messages', messageController.createMessage);
-app.post('/friends', friendController.createFriend);
-app.get('/friends', friendController.getAllFriends);
-app.put('/friends', friendController.updateFriend);
+
+app.get('/', function(req,res){
+
+  res.sendFile('/Users/MattLee1/Desktop/foodz/index.html');
+});
+
+
 
 app.listen(3000);
 
